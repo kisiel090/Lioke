@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+resource_name = "Object"
+script/source = "extends Sprite
+
+
+func _ready():
+	add_to_group(\"objects\")
+	pass
+
+func set_map_pos(cell):
+	set_position(global.map.map_to_world(cell))
+	pass
+
+func spawn(cell):
+	global.map.add_child(self)
+	set_map_pos(cell)
+	pass
+"
+_sections_unfolded = [ "Resource" ]
+
+[node name="Object" type="Sprite" index="0"]
+
+script = SubResource( 1 )
+
+

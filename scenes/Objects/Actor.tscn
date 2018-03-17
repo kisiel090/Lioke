@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Objects/Object.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+resource_name = "Actor"
+script/source = "extends \"res://scenes/Objects/Object.tscn::1\"
+
+export (int) onready var HP = 10
+
+signal acted()
+
+var controller
+
+func _ready():
+	._ready()
+	add_to_group(\"actors\")
+
+func fight(who):
+	who.HP -= 1
+	print(who.HP)
+	emit_signal(\"acted\")
+
+func kill():
+	if global.player != self:
+		queue_free()
+
+func act():
+	pass
+
+func wait():
+	emit_signal(\"acted\")
+
+func step(dir):
+	if dir.x == 0 and dir.y == 0:
+		emit_signal(\"acted\")
+	else:
+		#normalize
+		if dir.x == 0:
+			dir.y /= abs(dir.y)
+		elif dir.y == 0:
+			dir.x /= abs(dir.x)
+		else:
+			dir.y /= abs(dir.y)
+			dir.x /= abs(dir.x)
+		#-------------
+		var new_cell = global.map.world_to_map(get_position()) + dir
+		if global.map.get_cellv(new_cell) != 3:
+			set_map_pos(new_cell)
+			emit_signal(\"acted\")
+		else:
+			print(\"Actor just walked into a wall\")
+			emit_signal(\"acted\")
+	pass
+"
+_sections_unfolded = [ "Resource" ]
+
+[node name="Actor" index="0" instance=ExtResource( 1 )]
+
+script = SubResource( 1 )
+HP = 10
+
+

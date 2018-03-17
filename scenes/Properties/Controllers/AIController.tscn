@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+resource_name = "AIController"
+script/source = "extends Node
+
+onready var object = get_parent()
+
+func _ready():
+	object.controller = self
+	set_process_input(true)
+	pass
+
+func act():
+	var target = global.player
+	if rglib.distance(object.get_position(), target.get_position()) <= 1:
+		object.fight(target)
+	else:
+		go_towards(target)
+	pass
+
+func go_towards(target):
+	var a = global.map.world_to_map(object.get_position()) - global.map.world_to_map(target.get_position())
+	object.step(-a)
+	pass"
+_sections_unfolded = [ "Resource" ]
+
+[node name="AIController" type="Node" index="0"]
+
+script = SubResource( 1 )
+
+

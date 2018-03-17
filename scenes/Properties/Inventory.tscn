@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+resource_name = "Inventory"
+script/source = "extends Node
+
+onready var instancesCount = 0
+
+func pick_up(cell):
+	
+	pass
+
+func remove_item(spot, amount = 0):
+	if amount == 0: #if amount is 0 then clean the cell
+		clean_spot(spot)
+	else:
+		spot.count -= amount #else substract
+	pass
+
+
+func add_item(ID, spot, amount):
+	pass
+"
+_sections_unfolded = [ "Resource" ]
+
+[node name="Inventory" type="Node" index="0"]
+
+script = SubResource( 1 )
+
+

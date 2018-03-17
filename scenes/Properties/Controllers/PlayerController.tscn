@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+resource_name = "PlayerController"
+script/source = "extends Node
+
+onready var object = get_parent()
+
+signal player_acted()
+
+func _ready():
+	global.player = object
+	object.connect(\"acted\", global.map, \"_on_player_acted\")
+	object.controller = self
+	set_process_input(true)
+	pass
+
+func _input(event):
+	var N = event.is_action_pressed('step_n')
+	var NE = event.is_action_pressed('step_ne')
+	var E = event.is_action_pressed('step_e')
+	var SE = event.is_action_pressed('step_se')
+	var S = event.is_action_pressed('step_s')
+	var SW = event.is_action_pressed('step_sw')
+	var W = event.is_action_pressed('step_w')
+	var NW = event.is_action_pressed('step_nw')
+	var WAIT = event.is_action_pressed('step_wait')
+	
+	if N:
+		object.step(Vector2(0,-1))
+	if NE:
+		object.step(Vector2(1,-1))
+	if E:
+		object.step(Vector2(1,0))
+	if SE:
+		object.step(Vector2(1,1))
+	if S:
+		object.step(Vector2(0,1))
+	if SW:
+		object.step(Vector2(-1,1))
+	if W:
+		object.step(Vector2(-1,0))
+	if NW:
+		object.step(Vector2(-1,-1))
+	
+	if WAIT:
+		object.wait()
+	pass"
+_sections_unfolded = [ "Resource" ]
+
+[node name="PlayerController" type="Node" index="0"]
+
+script = SubResource( 1 )
+
+
