@@ -13,13 +13,13 @@ script/source = "extends TileMap
 onready var map = get_parent()
 
 func _ready():
-	for x in global.MAP_SIZE.x:
-		for y in global.MAP_SIZE.y:
-			set_cell(x, y,  0)
+	for xfog in global.MAP_SIZE.x:
+		for yfog in global.MAP_SIZE.y:
+			set_cell(xfog, yfog,  0)
 	pass
 
-func reveal(cells):
-	for cell in cells:
+func reveal(cellsfog):
+	for cell in cellsfog:
 		set_cell(cell.x, cell.y, -1)
 	pass
 
@@ -29,9 +29,7 @@ func shroud(cells):
 	pass
 
 func _on_player_position_changed():
-	
 	reveal(FOVlib.get_cells_in_fov(map.world_to_map(global.player.get_position()), global.player.view_range, map.get_occlusion_datamap()))
-	
 	pass
 
 #func update_edges():

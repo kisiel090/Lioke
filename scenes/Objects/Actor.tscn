@@ -34,9 +34,7 @@ func wait():
 	emit_signal(\"acted\")
 
 func step(dir):
-	if dir.x == 0 and dir.y == 0:
-		emit_signal(\"acted\")
-	else:
+	if not(dir.x == 0 and dir.y == 0):
 		if dir.x == 0:
 			dir.y /= abs(dir.y)
 		elif dir.y == 0:
@@ -52,7 +50,8 @@ func step(dir):
 			emit_signal(\"acted\")
 		else:
 			print(\"Actor just walked into a something\")
-			emit_signal(\"acted\")
+	emit_signal(\"acted\")
+	emit_signal(\"position_changed\")
 	pass
 "
 _sections_unfolded = [ "Resource" ]

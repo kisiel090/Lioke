@@ -8,7 +8,7 @@ func _ready():
 	var pl = player.instance()
 	add_child(pl)
 	pl.position = map_to_world(Vector2(2, 2))
-	$FogMap._on_player_position_changed()
+#	$FogMap._on_player_position_changed()
 	
 	var enemy = load("res://scenes/Objects/Enemy.tscn")
 	var ll = enemy.instance()
@@ -34,13 +34,12 @@ func _on_player_acted():
 func get_occlusion_datamap():
 	var occlusion_datamap = []
 	
-	for x in range(global.MAP_SIZE.x):
-		occlusion_datamap.append([])
-		for y in range(global.MAP_SIZE.y):
-			if is_wall(self.get_cellv(Vector2(x, y))):
-				occlusion_datamap[x].append(1)
+	for xoccl in range(global.MAP_SIZE.x):
+		for yoccl in range(global.MAP_SIZE.y):
+			if is_wall(self.get_cellv(Vector2(xoccl, yoccl))):
+				occlusion_datamap.append(1)
 			else:
-				occlusion_datamap[x].append(0)
+				occlusion_datamap.append(0)
 	
 	for object in get_tree().get_nodes_in_group("occluders"):
 		occlusion_datamap[object.x][object.y] = 1
