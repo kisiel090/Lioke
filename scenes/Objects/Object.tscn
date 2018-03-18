@@ -5,13 +5,22 @@
 resource_name = "Object"
 script/source = "extends Sprite
 
+export (bool) var impassable = false
+export (bool) var FOV_obstruct = false
+export (int) var view_range = 4
 
 func _ready():
 	add_to_group(\"objects\")
+	if FOV_obstruct:
+		add_to_group(\"occluders\")
 	pass
 
 func set_map_pos(cell):
 	set_position(global.map.map_to_world(cell))
+	pass
+
+func get_map_pos():
+	return global.map.world_to_map(get_position())
 	pass
 
 func spawn(cell):
@@ -21,8 +30,11 @@ func spawn(cell):
 "
 _sections_unfolded = [ "Resource" ]
 
-[node name="Object" type="Sprite" index="0"]
+[node name="Object" type="Sprite"]
 
 script = SubResource( 1 )
+impassable = false
+FOV_obstruct = false
+view_range = 4
 
 
