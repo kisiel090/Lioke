@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/graphics/Fog.png" type="Texture" id=1]
+
+[node name="Fog" type="Node2D" index="0"]
+
+[node name="Black" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+resource_name = "Memory"
+script/source = "extends Node
+#future class for containing a fog tilemap for every other actor
+"
+_sections_unfolded = [ "Resource" ]
+
+[node name="Memory" type="Node" index="0"]
+
+script = SubResource( 1 )
+
+
