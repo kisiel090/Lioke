@@ -10,6 +10,7 @@ texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset" ]
 impassable = true
+view_range = 4
 
 [node name="AIController" parent="." index="0" instance=ExtResource( 3 )]
 

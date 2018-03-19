@@ -1,6 +1,7 @@
 extends TileMap
 
 export (PackedScene) var player
+onready var occlusion_datamap = []
 
 func _ready():
 	
@@ -8,7 +9,7 @@ func _ready():
 	var pl = player.instance()
 	add_child(pl)
 	pl.position = map_to_world(Vector2(2, 2))
-#	$FogMap._on_player_position_changed()
+	$FogMap._on_player_position_changed()
 	
 	var enemy = load("res://scenes/Objects/Enemy.tscn")
 	var ll = enemy.instance()
@@ -29,21 +30,24 @@ func _on_player_acted():
 	for actor in get_tree().get_nodes_in_group("actors"):
 		if actor != global.player and actor.controller:
 			actor.controller.act()
+	
 	pass
 
 func get_occlusion_datamap():
-	var occlusion_datamap = []
-	
-	for xoccl in range(global.MAP_SIZE.x):
-		for yoccl in range(global.MAP_SIZE.y):
-			if is_wall(self.get_cellv(Vector2(xoccl, yoccl))):
+	occlusion_datamap = []
+	for yoccl in range(global.MAP_SIZE.y):
+		for xoccl in range(global.MAP_SIZE.x):
+			var lol = global.map.get_cell(xoccl, yoccl)
+			var mhm = is_wall(lol)
+			if mhm:
 				occlusion_datamap.append(1)
 			else:
 				occlusion_datamap.append(0)
 	
+
 	for object in get_tree().get_nodes_in_group("occluders"):
-		occlusion_datamap[object.x][object.y] = 1
-	
+		occlusion_datamap[global.MAP_SIZE.x * object.y + object.x] = 1
+
 	return occlusion_datamap
 	pass
 
