@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+resource_name = "InventorySlot"
+script/source = "extends Node
+#class for holding specified things. It describes place on which item is placed (name of node), 
+#what is the type of item(permitted_items), how much is there of it(item_count) and can be (max_weight),
+#and ?can it be used immediately without switching? (like in_hands or on_belt)
+#Every object that is supposed to have some kind of inventory has this node.
+#Every such node corresponds to one type of item. 
+
+#So for example player will have it for head, etc.
+#Backpack will have infinite number, that will be increased as new items are added to it.
+#...you can also hold alive things if they fit
+var item
+export (int) var item_count = 0
+export (int) var max_weight = 5000 #in grams
+
+
+onready var premitted_items = []
+
+func _ready():
+	
+	pass
+
+func _use_item():
+	
+	pass
+
+func add_item(item, amount):
+	
+	pass
+
+func remove_item(amount):
+	
+	pass
+
+"
+_sections_unfolded = [ "Resource" ]
+
+[node name="InventorySlot" type="Node" index="0"]
+
+script = SubResource( 1 )
+item_count = 0
+max_weight = 5000
+
+
