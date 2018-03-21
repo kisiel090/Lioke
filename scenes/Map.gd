@@ -11,10 +11,13 @@ func _ready():
 	pl.position = map_to_world(Vector2(2, 2))
 	$FogMap._on_player_position_changed()
 	
-	var enemy = load("res://scenes/Objects/Enemy.tscn")
-	var ll = enemy.instance()
-	add_child(ll)
-	ll.position = map_to_world(Vector2(2, 4))
+	var enemy = load("res://scenes/Objects/Enemy.tscn").instance()
+	add_child(enemy)
+	enemy.position = map_to_world(Vector2(2, 4))
+	
+	var rock = load("res://scenes/Objects/Item.tscn").instance()
+	add_child(rock)
+	rock.position = map_to_world(Vector2(3, 2))
 	
 	pass
 

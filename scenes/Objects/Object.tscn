@@ -7,7 +7,6 @@ script/source = "extends Sprite
 
 export (bool) var impassable = false
 export (bool) var FOV_obstruct = false
-export (int) var view_range = 4
 
 func _ready():
 	add_to_group(\"objects\")
@@ -35,6 +34,5 @@ _sections_unfolded = [ "Resource" ]
 script = SubResource( 1 )
 impassable = false
 FOV_obstruct = false
-view_range = 4
 
 

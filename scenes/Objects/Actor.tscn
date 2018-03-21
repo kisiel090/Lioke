@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Objects/Object.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Properties/Inventory.tscn" type="PackedScene" id=2]
 
 [sub_resource type="GDScript" id=1]
 
@@ -37,8 +38,12 @@ func wait():
 func pick_up():
 	var objects = global.map.get_objects_in_cell(global.map.world_to_map(get_position()))
 	for obj in objects:
-		if obj is Item:
-			
+		if obj.item:
+			$Inventory.pick_up(obj, obj.count)
+	pass
+
+func drop():
+	$Inventory.drop()
 	pass
 
 func step(dir):
@@ -64,24 +69,12 @@ func step(dir):
 "
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="GDScript" id=2]
-
-resource_name = "Inventory"
-script/source = "extends Node
-var pickup_slot
-func _ready():
-	pass
-"
-_sections_unfolded = [ "Resource" ]
-
 [node name="Actor" index="0" instance=ExtResource( 1 )]
 
 script = SubResource( 1 )
 HP = 10
 view_range = 3
 
-[node name="Inventory" type="Node" parent="." index="0"]
-
-script = SubResource( 2 )
+[node name="Inventory" parent="." index="0" instance=ExtResource( 2 )]
 
 

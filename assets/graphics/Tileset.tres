@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=2]
+[gd_resource type="TileSet" load_steps=4 format=2]
 
 [ext_resource path="res://assets/graphics/Tileset.png" type="Texture" id=1]
+[ext_resource path="res://assets/graphics/items/rock.png" type="Texture" id=2]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 
@@ -56,4 +57,13 @@ polygon = PoolVector2Array( 0, 8, 0, 0, 8, 0, 8, 8 )
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
 4/shapes = [  ]
+5/name = "Item"
+5/texture = ExtResource( 2 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 8, 8 )
+5/is_autotile = false
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shapes = [  ]
 

@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+resource_name = "Inventory"
+script/source = "extends Node
+
+onready var parent = get_parent()
+export var active_slots = 1 #amount of InventorySlot that are able to interact with outside-inventory
+#Order of children is crucial, first ones are the active ones
+func _ready():
+#	if active_slots == 0: #simple check
+#		print(\"Alert! Object %s with ID %s have a wrong inventory\" % [parent.name, parent.get_instance_id()] )
+	pass
+
+func pick_up(item, amount, with = 0, pick_up_with_only_this_slot = false):
+	if pick_up_with_only_this_slot and get_child(with).add_item(item, amount): #pick up with slot
+		return true
+	for i in active_slots: #pick up, scan for available active slot
+		if get_child(i).add_item(item, amount):
+			return true
+	return false
+	pass
+
+func drop(from = 0):
+	get_child(from).remove_item()
+	pass
+"
+_sections_unfolded = [ "Resource" ]
+
+[node name="Inventory" type="Node"]
+
+script = SubResource( 1 )
+active_slots = 1
+
+
