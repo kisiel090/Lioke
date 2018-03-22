@@ -71,7 +71,9 @@ _sections_unfolded = [ "Resource" ]
 
 [node name="Actor" instance=ExtResource( 1 )]
 
+z_index = 2
 script = SubResource( 1 )
+_sections_unfolded = [ "Z Index" ]
 HP = 10
 view_range = 3
 

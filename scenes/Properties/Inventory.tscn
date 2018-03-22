@@ -19,9 +19,11 @@ func pick_up(item, amount, with = 0, pick_up_with_only_this_slot = false):
 
 func drop(from = 0):
 	var tem = get_child(from).remove_item()
-	global.map.add_child(tem)
-	var poss = global.map.world_to_map(parent.position)
-	tem.position = poss
+	if tem:
+		global.map.add_child(tem)
+		tem.position = parent.position
+	else:
+		print(\"you have nothing to drop\")
 "
 _sections_unfolded = [ "Resource" ]
 
