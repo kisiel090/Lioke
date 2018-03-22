@@ -38,7 +38,7 @@ func wait():
 func pick_up():
 	var objects = global.map.get_objects_in_cell(global.map.world_to_map(get_position()))
 	for obj in objects:
-		if obj.item:
+		if obj.is_in_group(\"items\"):
 			$Inventory.pick_up(obj, obj.count)
 	pass
 
@@ -69,7 +69,7 @@ func step(dir):
 "
 _sections_unfolded = [ "Resource" ]
 
-[node name="Actor" index="0" instance=ExtResource( 1 )]
+[node name="Actor" instance=ExtResource( 1 )]
 
 script = SubResource( 1 )
 HP = 10

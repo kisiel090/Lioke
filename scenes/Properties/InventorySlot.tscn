@@ -14,12 +14,13 @@ script/source = "extends Node
 #Backpack will have infinite number, that will be increased as new items are added to it.
 #...you can also hold alive things if they fit
 export (int) var max_weight = 5000 #in grams
-
+export (PackedScene) var initial_item
 
 #onready var permitted_items = []
 
 func _ready():
-	
+	if initial_item:
+		add_item(initial_item)
 	pass
 
 func _use_item():
@@ -28,32 +29,44 @@ func _use_item():
 
 func add_item(item_in, amount):
 	#check if slot available, is it too big, -and can it be put in this slot-
-	var child = get_child(0)
-	if child != item_in or (item_in.weight * amount + child.weight * child.count) > max_weight:
+	if !get_child_count():
+		item_in.get_parent().remove_child(item_in)
+		add_child(item_in)
+		item_in.hide()
+		item_in.position = Vector2(0, 0)
+		return true
+	elif get_child(0) != item_in or (item_in.weight * amount + get_child(0).weight * get_child(0).count) > max_weight:
 		return false
-	elif child == null:
-		add_child(item_in)#amount already in item
-		global.map.remove_child(item_in)
 	else:
-		child.count += amount
+		get_child(0).count += amount
+		item_in.get_parent().remove_child(item_in)
+		add_child(item_in)
+		item_in.hide()
+		item_in.position = Vector2(0, 0)
+		return true
 	pass
 
 func remove_item(amount = 0):
-	var tem = get_child(0)
-	if tem == null or tem.count < amount: #if we don't have item, or to little of it
+	var tem
+	if !get_child_count() or get_child(0).count < amount: #if we don't have item, or to little of it
 		return false
 	elif amount == 0: #if we have item and want to delete all of it
-		remove_child(0)
+		tem = get_child(0)
+		remove_child(tem)
+		tem.show()
 		return tem
 	else: #if we have item and want to delete some of it
-		tem.count -= amount
-		if tem.count == 0:
-			remove_child(0)
+		get_child(0).count -= amount
+		if get_child(0).count == 0:
+			tem = get_child(0)
+			remove_child(tem)
+			tem.show()
 			return tem
-		var smaller_tem = tem.duplicate()# we need to duplicate the object to pass it to other
-		smaller_tem.count -= amount
+		var smaller_tem = get_child(0).duplicate()# we need to duplicate the object to pass it to other
+		smaller_tem.count = amount
 		return smaller_tem
 	pass
+
 
 "
 _sections_unfolded = [ "Resource" ]
@@ -62,5 +75,6 @@ _sections_unfolded = [ "Resource" ]
 
 script = SubResource( 1 )
 max_weight = 5000
+initial_item = null
 
 

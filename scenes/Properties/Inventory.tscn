@@ -8,10 +8,6 @@ script/source = "extends Node
 onready var parent = get_parent()
 export var active_slots = 1 #amount of InventorySlot that are able to interact with outside-inventory
 #Order of children is crucial, first ones are the active ones
-func _ready():
-#	if active_slots == 0: #simple check
-#		print(\"Alert! Object %s with ID %s have a wrong inventory\" % [parent.name, parent.get_instance_id()] )
-	pass
 
 func pick_up(item, amount, with = 0, pick_up_with_only_this_slot = false):
 	if pick_up_with_only_this_slot and get_child(with).add_item(item, amount): #pick up with slot
@@ -20,11 +16,12 @@ func pick_up(item, amount, with = 0, pick_up_with_only_this_slot = false):
 		if get_child(i).add_item(item, amount):
 			return true
 	return false
-	pass
 
 func drop(from = 0):
-	get_child(from).remove_item()
-	pass
+	var tem = get_child(from).remove_item()
+	global.map.add_child(tem)
+	var poss = global.map.world_to_map(parent.position)
+	tem.position = poss
 "
 _sections_unfolded = [ "Resource" ]
 
