@@ -1,0 +1,22 @@
+[gd_scene format=2]
+
+[node name="Tileset_overworld" type="Node2D"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Grass" type="Sprite" parent="." index="0"]
+
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 8, 8 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="Grass_Dry" type="Sprite" parent="." index="1"]
+
+position = Vector2( 32, 0 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 8, 8, 8 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+

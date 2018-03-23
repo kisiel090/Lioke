@@ -8,7 +8,7 @@ script/source = "extends Node
 "
 _sections_unfolded = [ "Resource" ]
 
-[node name="Memory" type="Node" index="0"]
+[node name="Memory" type="Node"]
 
 script = SubResource( 1 )
 

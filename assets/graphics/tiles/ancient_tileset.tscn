@@ -1,0 +1,372 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_brick_clean.png" type="Texture" id=1]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_brick_blood.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_brick_dirty.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_brick_destroyed.png" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_center.png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_top_clean.png" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_bottom.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_right_clean.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_left_clean.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_cornerNW_clean.png" type="Texture" id=10]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_cornerNE_clean.png" type="Texture" id=11]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_cornerSW_clean.png" type="Texture" id=12]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_cornerSE_clean.png" type="Texture" id=13]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_floorNW_clean.png" type="Texture" id=14]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_floorNE_clean.png" type="Texture" id=15]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_floorSW_clean.png" type="Texture" id=16]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_wall_floorSE_clean.png" type="Texture" id=17]
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_column.png" type="Texture" id=18]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -32, 32, -32, -32, 32, -32, 32, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -32, 24, 32, 24, 32, -32, -32, -32 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -32, 32, 32, 32, 32, -8, -32, -8 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -12, 32, -12, -32, 32, -32, 32, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=5]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( 20, 32, 20, -32, -32, -32, -32, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=6]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -12, 32, -12, -8, 32, -8, 32, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=7]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( 20, 32, 20, -8, -32, -8, -32, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=8]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -12, -32, -12, 24, 32, 24, 32, -32 )
+
+[sub_resource type="OccluderPolygon2D" id=9]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( 20, 24, 20, -32, -32, -32, -32, 24 )
+
+[sub_resource type="OccluderPolygon2D" id=10]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -32, -32, -32, 32, 20, 32, 20, 24, 32, 24, 32, -32 )
+
+[sub_resource type="OccluderPolygon2D" id=11]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
+
+[sub_resource type="OccluderPolygon2D" id=12]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -32, -32, 20, -32, 20, -8, 32, -8, 32, 32, -32, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=13]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -11.9999, -32, 32, -32, 32, 32, -31.9999, 32, -31.9999, -8, -11.9999, -8 )
+
+[sub_resource type="OccluderPolygon2D" id=14]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( 20, 20, 20, 12, 24, 12, 24, 8, 20, 8, 20, 4, 24, 4, 24, 0, 20, 0, 20, -8, 12, -8, 12, -12, 8, -12, 8, -8, 4, -8, 4, -12, 0, -12, 0, -8, -8, -8, -8, 0, -12, 0, -12, 4, -8, 4, -8, 8, -12, 8, -12, 12, -8, 12, -8, 20, 0, 20, 0, 24, 4, 24, 4, 20, 8, 20, 8, 24, 12, 24, 12, 20 )
+
+[node name="ancient_tileset" type="Node2D" index="0"]
+
+[node name="floor_clean" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+centered = false
+
+[node name="floor_blood" type="Sprite" parent="." index="1"]
+
+position = Vector2( 16, 16 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="floor_dirty" type="Sprite" parent="." index="2"]
+
+position = Vector2( 0, 16 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="floor_destroyed" type="Sprite" parent="." index="3"]
+
+position = Vector2( 16, 0 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="wall_center" type="Sprite" parent="." index="4"]
+
+position = Vector2( 16, 48 )
+texture = ExtResource( 5 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="wall_center" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 1 )
+light_mask = 1
+
+[node name="wall_top" type="Sprite" parent="." index="5"]
+
+position = Vector2( 16, 64 )
+texture = ExtResource( 6 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="wall_top" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 2 )
+light_mask = 1
+
+[node name="wall_bottom" type="Sprite" parent="." index="6"]
+
+position = Vector2( 16, 32 )
+texture = ExtResource( 7 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="wall_bottom" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 3 )
+light_mask = 1
+
+[node name="wall_right" type="Sprite" parent="." index="7"]
+
+position = Vector2( 0, 48 )
+texture = ExtResource( 8 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="wall_right" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 4 )
+light_mask = 1
+
+[node name="wall_left" type="Sprite" parent="." index="8"]
+
+position = Vector2( 32, 48 )
+texture = ExtResource( 9 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="wall_left" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 5 )
+light_mask = 1
+
+[node name="wall_corner_NW" type="Sprite" parent="." index="9"]
+
+position = Vector2( 0, 32 )
+texture = ExtResource( 10 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="wall_corner_NW" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 6 )
+light_mask = 1
+
+[node name="wall_corner_NE" type="Sprite" parent="." index="10"]
+
+position = Vector2( 32, 32 )
+texture = ExtResource( 11 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="wall_corner_NE" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 7 )
+light_mask = 1
+
+[node name="wall_corner_SW" type="Sprite" parent="." index="11"]
+
+position = Vector2( 0, 64 )
+texture = ExtResource( 12 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="wall_corner_SW" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 8 )
+light_mask = 1
+
+[node name="wall_corner_SE" type="Sprite" parent="." index="12"]
+
+position = Vector2( 32, 64 )
+texture = ExtResource( 13 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="wall_corner_SE" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 9 )
+light_mask = 1
+
+[node name="floor_corner_NW" type="Sprite" parent="." index="13"]
+
+position = Vector2( 32, 0 )
+texture = ExtResource( 14 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="floor_corner_NW" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 10 )
+light_mask = 1
+
+[node name="floor_corner_NE" type="Sprite" parent="." index="14"]
+
+position = Vector2( 48, 0 )
+texture = ExtResource( 15 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="floor_corner_NE" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 11 )
+light_mask = 1
+
+[node name="floor_corner_SW" type="Sprite" parent="." index="15"]
+
+position = Vector2( 32, 16 )
+texture = ExtResource( 16 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="floor_corner_SW" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 12 )
+light_mask = 1
+
+[node name="floor_corner_SE" type="Sprite" parent="." index="16"]
+
+position = Vector2( 48, 16 )
+texture = ExtResource( 17 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="floor_corner_SE" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 13 )
+light_mask = 1
+
+[node name="column" type="Sprite" parent="." index="17"]
+
+position = Vector2( 48, 32 )
+texture = ExtResource( 18 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="column" index="0"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.25, 0.25 )
+occluder = SubResource( 14 )
+light_mask = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+

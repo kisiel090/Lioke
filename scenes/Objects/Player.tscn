@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Objects/Actor.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/graphics/animations/Human/HumanIdle_Front1.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/Skeleton.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Properties/InventorySlot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Objects/Item.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Properties/Controllers/PlayerController.tscn" type="PackedScene" id=5]
@@ -11,7 +11,8 @@
 
 texture = ExtResource( 2 )
 centered = false
-_sections_unfolded = [ "Offset" ]
+_sections_unfolded = [ "Offset", "Z Index" ]
+view_range = 4
 
 [node name="Inventory" parent="." index="0"]
 
@@ -23,17 +24,13 @@ initial_item = ExtResource( 4 )
 
 [node name="hand_l" parent="Inventory" index="1" instance=ExtResource( 3 )]
 
-initial_item = null
-
 [node name="head" parent="Inventory" index="2" instance=ExtResource( 3 )]
-
-initial_item = null
 
 [node name="PlayerController" parent="." index="1" instance=ExtResource( 5 )]
 
 [node name="Light2D" type="Light2D" parent="." index="2"]
 
-position = Vector2( 4, 4 )
+position = Vector2( 8, 8 )
 scale = Vector2( 2, 2 )
 enabled = true
 editor_only = false
@@ -63,7 +60,7 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 
-position = Vector2( 4, 4 )
+position = Vector2( 8, 8 )
 anchor_mode = 1
 rotating = false
 current = false

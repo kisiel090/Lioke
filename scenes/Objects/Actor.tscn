@@ -9,7 +9,7 @@ resource_name = "Actor"
 script/source = "extends \"res://scenes/Objects/Object.tscn::1\"
 
 export (int) onready var HP = 10
-export (int) var view_range = 3
+export (int) var view_range = 4
 
 signal acted()
 signal position_changed()
@@ -75,7 +75,7 @@ z_index = 2
 script = SubResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 HP = 10
-view_range = 3
+view_range = 4
 
 [node name="Inventory" parent="." index="0" instance=ExtResource( 2 )]
 
