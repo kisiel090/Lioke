@@ -26,7 +26,7 @@ func go_towards(target):
 	pass"
 _sections_unfolded = [ "Resource" ]
 
-[node name="AIController" type="Node"]
+[node name="AIController" type="Node" index="0"]
 
 script = SubResource( 1 )
 

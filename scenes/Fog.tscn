@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/graphics/Fog.png" type="Texture" id=1]
 
-[node name="Fog" type="Node2D" index="0"]
+[node name="Fog" type="Node2D"]
 
 [node name="Black" type="Sprite" parent="." index="0"]
 

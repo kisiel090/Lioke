@@ -9,6 +9,11 @@ func distance(from, to):
 		return abs(a.y)
 	pass
 
+#func get_rect(origin, radius):
+#	var list = []
+#
+#	pass
+
 func get_line(origin, to):
 	var points = []
 	var xi

@@ -12,7 +12,7 @@ signal player_acted()
 func _ready():
 	global.player = object
 	object.connect(\"acted\", global.map, \"_on_player_acted\")
-	object.connect(\"position_changed\", global.map.get_node(\"FogMap\"), \"_on_player_position_changed\")
+	object.connect(\"position_changed\", global.map.get_node(\"FogMap\") , \"_on_player_position_changed\")
 	object.controller = self
 	set_process_input(true)
 	pass

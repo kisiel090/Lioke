@@ -4,13 +4,12 @@
 
 [resource]
 
-0/name = "Sprite"
+0/name = "Black"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 8, 8 )
+0/region = Rect2( 0, 0, 16, 16 )
 0/is_autotile = false
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shapes = [  ]
-

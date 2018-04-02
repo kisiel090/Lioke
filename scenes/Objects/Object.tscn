@@ -31,7 +31,9 @@ _sections_unfolded = [ "Resource" ]
 
 [node name="Object" type="Sprite"]
 
+centered = false
 script = SubResource( 1 )
+_sections_unfolded = [ "Offset" ]
 impassable = false
 FOV_obstruct = false
 

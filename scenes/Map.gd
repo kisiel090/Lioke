@@ -1,23 +1,19 @@
 extends TileMap
 
 export (PackedScene) var player
+export (PackedScene) var enemy
 onready var occlusion_datamap = []
+var astar_graph
+
+func _enter_tree():
+	global.map = self
 
 func _ready():
 	
-	global.map = self
-	var pl = player.instance()
-	add_child(pl)
-	pl.position = map_to_world(Vector2(2, 2))
 	$FogMap._on_player_position_changed()
-	
-	var enemy = load("res://scenes/Objects/Enemy.tscn").instance()
-	add_child(enemy)
-	enemy.position = map_to_world(Vector2(2, 4))
-	
-	var rock = load("res://scenes/Objects/Item.tscn").instance()
-	add_child(rock)
-	rock.position = map_to_world(Vector2(3, 2))
+	astar_graph = _initiate_astar()
+	print(astar_graph.get_point_connections( 1 + global.MAP_SIZE.x * 1))
+	print(astar_graph.get_point_connections( 2 + global.MAP_SIZE.x * 1))
 	
 	pass
 
@@ -40,8 +36,7 @@ func get_occlusion_datamap():
 	occlusion_datamap = []
 	for yoccl in range(global.MAP_SIZE.y):
 		for xoccl in range(global.MAP_SIZE.x):
-			var lol = global.map.get_cell(xoccl, yoccl)
-			var mhm = is_wall(lol)
+			var mhm = is_wall(Vector2(xoccl, yoccl))
 			if mhm:
 				occlusion_datamap.append(1)
 			else:
@@ -59,7 +54,9 @@ func is_passable(cell):
 	for tile in cnst.walls:
 		if global.map.get_cellv(cell) == tile:
 			passable = false
-	for object in global.map.get_objects_in_cell(cell):
+	var gl = global.map.get_objects_in_cell(cell)
+	for object in gl:
+		print("Hi! my name is %s" % object.name)
 		if object.impassable:
 			passable = false
 	return passable
@@ -69,7 +66,30 @@ func is_passable(cell):
 
 func is_wall(cellv):
 	for wall in cnst.walls:
-		if cellv == wall:
+		if get_cellv(cellv) == wall:
 			return true
 	return false
 	pass
+
+func _initiate_astar():	#initiate A* graph
+	var graph = AStar.new()
+	for y in global.MAP_SIZE.y:
+		for x in global.MAP_SIZE.x:
+			graph.add_point(x + global.MAP_SIZE.x * y, Vector3(x, y, 0))
+	
+	for y in global.MAP_SIZE.y:
+		for x in global.MAP_SIZE.x:
+			#	OOO
+			#	OoX 
+			#	XXX
+			if !is_wall(Vector2( x , y )):
+				if !is_wall(Vector2( x + 1 , y + 1 )):
+					graph.connect_points(x + global.MAP_SIZE.x * y, x + 1 + global.MAP_SIZE.x * (y + 1))
+				if !is_wall(Vector2( x - 1 , y + 1 )):
+					graph.connect_points(x + global.MAP_SIZE.x * y, x - 1 + global.MAP_SIZE.x * (y + 1))
+				if !is_wall(Vector2( x , y + 1 )):
+					graph.connect_points(x + global.MAP_SIZE.x * y, x + global.MAP_SIZE.x * (y + 1))
+				if !is_wall(Vector2( x + 1 , y )):
+					graph.connect_points(x + global.MAP_SIZE.x * y, x + 1 + global.MAP_SIZE.x * y )
+	return graph
+

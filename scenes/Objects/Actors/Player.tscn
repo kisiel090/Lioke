@@ -10,13 +10,12 @@
 [node name="Player" instance=ExtResource( 1 )]
 
 texture = ExtResource( 2 )
-centered = false
 _sections_unfolded = [ "Offset", "Z Index" ]
-view_range = 4
 
 [node name="Inventory" parent="." index="0"]
 
 active_slots = 2
+infinite = false
 
 [node name="hand_r" parent="Inventory" index="0" instance=ExtResource( 3 )]
 
@@ -36,7 +35,7 @@ enabled = true
 editor_only = false
 texture = ExtResource( 6 )
 offset = Vector2( 0, 0 )
-texture_scale = 1.0
+texture_scale = 2.0
 color = Color( 1, 1, 1, 1 )
 energy = 1.0
 mode = 0

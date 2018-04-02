@@ -17,7 +17,7 @@ func get_cells_in_fov(origin, radius, occlusion_data):
 
 func cast_fov_ray(origin, cell, occlusion_data):
 	var line = rglib.get_line(origin, cell)
-	#remove points out of map to prevent access error KLUDGE
+	#remove points out of map to prevent access error
 	var i = 0
 	while i < line.size():
 		if line[i].x < 0 or line[i].x >= global.MAP_SIZE.x or line[i].y < 0 or line[i].y >= global.MAP_SIZE.y:

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Objects/Object.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/graphics/objects/ancient/table_center.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Properties/Inventory.tscn" type="PackedScene" id=3]
+
+[sub_resource type="GDScript" id=1]
+
+resource_name = "Table"
+script/source = "extends \"res://scenes/Objects/Object.tscn::1\"
+
+var tex_left = preload(\"res://assets/graphics/objects/ancient/table_left.png\")
+var tex_right = preload(\"res://assets/graphics/objects/ancient/table_right.png\")
+var tex_center = preload(\"res://assets/graphics/objects/ancient/table_center.png\")
+
+func _ready():
+	if global.map.get_objects_in_cell(global.map.world_to_map(position) + Vector2(1, 0)) != [cnst.table] and global.map.get_objects_in_cell(global.map.world_to_map(position) - Vector2(1, 0)) == [cnst.table]:
+		set_texture(tex_left)
+	if global.map.get_objects_in_cell(global.map.world_to_map(position) + Vector2(1, 0)) == [cnst.table] and global.map.get_objects_in_cell(global.map.world_to_map(position) - Vector2(1, 0)) != [cnst.table]:
+		set_texture(tex_right)
+	if global.map.get_objects_in_cell(global.map.world_to_map(position) + Vector2(1, 0)) == [cnst.table] and global.map.get_objects_in_cell(global.map.world_to_map(position) - Vector2(1, 0)) == [cnst.table]:
+		set_texture(tex_center)
+	pass
+
+
+"
+_sections_unfolded = [ "Resource" ]
+
+[node name="Table" instance=ExtResource( 1 )]
+
+texture = ExtResource( 2 )
+script = SubResource( 1 )
+impassable = true
+
+[node name="Inventory" parent="." index="0" instance=ExtResource( 3 )]
+
+active_slots = 0
+
+
