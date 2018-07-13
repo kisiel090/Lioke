@@ -1,5 +1,5 @@
-extends Node2D
+extends Control
 
 func _ready():
-	get_tree().change_scene("res://scenes/map.tscn")
+	#get_tree().change_scene("res://scenes/Map.tscn")
 	pass

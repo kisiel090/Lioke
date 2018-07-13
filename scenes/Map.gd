@@ -12,8 +12,6 @@ func _ready():
 	
 	$FogMap._on_player_position_changed()
 	astar_graph = _initiate_astar()
-	print(astar_graph.get_point_connections( 1 + global.MAP_SIZE.x * 1))
-	print(astar_graph.get_point_connections( 2 + global.MAP_SIZE.x * 1))
 	
 	pass
 
@@ -56,7 +54,6 @@ func is_passable(cell):
 			passable = false
 	var gl = global.map.get_objects_in_cell(cell)
 	for object in gl:
-		print("Hi! my name is %s" % object.name)
 		if object.impassable:
 			passable = false
 	return passable

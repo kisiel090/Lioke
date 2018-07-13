@@ -22,7 +22,6 @@ func _ready():
 
 func fight(who):
 	who.HP -= 1
-	print(who.HP)
 	emit_signal(\"acted\")
 
 func kill():

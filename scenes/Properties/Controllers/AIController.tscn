@@ -5,28 +5,49 @@
 resource_name = "AIController"
 script/source = "extends Node
 
-onready var object = get_parent()
+enum states {STATE_IDLE, STATE_FOLLOWING, STATE_ATTACKING, STATE_ACTIVE}
 
+onready var object = get_parent()
+onready var state = STATE_IDLE
 func _ready():
 	object.controller = self
 	set_process_input(true)
 	pass
 
 func act():
-	var target = global.player
-	if rglib.distance(object.get_position(), target.get_position()) <= 1:
-		object.fight(target)
-	else:
-		go_towards(target)
+	match state:
+		STATE_IDLE:
+			if check_for_life():
+				state = STATE_FOLLOWING
+		STATE_FOLLOWING:
+			go_towards(global.player)
+			return
+		STATE_ACTIVE:
+			rattle()
+			return
+		STATE_ATTACKING:
+			if rglib.distance(object.get_position(), global.player.get_position()) <= 1:
+				object.fight(global.player)
+			return
+		_:
+			return
 	pass
 
 func go_towards(target):
 	var a = global.map.world_to_map(object.get_position()) - global.map.world_to_map(target.get_position())
 	object.step(-a)
+	pass
+
+func rattle():
+	print(\"rattle\")
+	pass
+
+func check_for_life():
+	
 	pass"
 _sections_unfolded = [ "Resource" ]
 
-[node name="AIController" type="Node" index="0"]
+[node name="AIController" type="Node"]
 
 script = SubResource( 1 )
 

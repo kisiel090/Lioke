@@ -1,16 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Objects/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/graphics/Skeleton.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Properties/InventorySlot.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Objects/Item.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Properties/Controllers/PlayerController.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/graphics/light/torch.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Properties/Controllers/PlayerController.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/graphics/light/torch.png" type="Texture" id=5]
 
 [node name="Player" instance=ExtResource( 1 )]
 
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Offset", "Z Index" ]
 
 [node name="Inventory" parent="." index="0"]
 
@@ -19,13 +17,11 @@ infinite = false
 
 [node name="hand_r" parent="Inventory" index="0" instance=ExtResource( 3 )]
 
-initial_item = ExtResource( 4 )
-
 [node name="hand_l" parent="Inventory" index="1" instance=ExtResource( 3 )]
 
 [node name="head" parent="Inventory" index="2" instance=ExtResource( 3 )]
 
-[node name="PlayerController" parent="." index="1" instance=ExtResource( 5 )]
+[node name="PlayerController" parent="." index="1" instance=ExtResource( 4 )]
 
 [node name="Light2D" type="Light2D" parent="." index="2"]
 
@@ -33,7 +29,7 @@ position = Vector2( 8, 8 )
 scale = Vector2( 2, 2 )
 enabled = true
 editor_only = false
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 offset = Vector2( 0, 0 )
 texture_scale = 2.0
 color = Color( 1, 1, 1, 1 )

@@ -29,6 +29,7 @@ func _use_item():
 
 func add_item(item_in, amount = item_in.count):
 	#check if slot available, is it too big, -and can it be put in this slot-
+	print(\"Hi! my name is %s\" % item_in.name)
 	if !get_child_count():
 		if item_in.get_parent():
 			item_in.get_parent().remove_child(item_in)
@@ -49,7 +50,7 @@ func add_item(item_in, amount = item_in.count):
 
 func remove_item(amount = 0):
 	var tem
-	if !get_child_count() or get_child(0).count < amount: #if we don't have item, or to little of it
+	if !get_child_count() or get_child(0).count < amount: #if we don't have item, or too little of it
 		return false
 	elif amount == 0: #if we have item and want to delete all of it
 		tem = get_child(0)

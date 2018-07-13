@@ -1,17 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/Objects/Object.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/graphics/items/rock.png" type="Texture" id=2]
 
 [sub_resource type="GDScript" id=1]
 
 resource_name = "Item"
 script/source = "extends \"res://scenes/Objects/Object.tscn::1\"
 
-onready var item = true
-
+export var on_top = true
+export var use_on_equip = false
+export var stackable = true
+export (Vector2) var hold_point = Vector2(cnst.TILE_SIZE.x/2 - 1, cnst.TILE_SIZE.y/2 - 1)
 export (int) var count = 1
-export (int) var weight = 100
+export (int) var weight_g = 100
 
 func _ready():
 	add_to_group(\"items\")
@@ -22,11 +23,13 @@ _sections_unfolded = [ "Resource" ]
 [node name="Item" instance=ExtResource( 1 )]
 
 z_index = 1
-texture = ExtResource( 2 )
-centered = false
 script = SubResource( 1 )
 _sections_unfolded = [ "Offset", "Z Index" ]
+on_top = true
+use_on_equip = false
+stackable = true
+hold_point = null
 count = 1
-weight = 100
+weight_g = 100
 
 

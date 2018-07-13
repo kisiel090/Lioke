@@ -12,8 +12,9 @@ export var active_slots = 1 #amount of InventorySlot that are able to interact w
 export var infinite = false
 
 func pick_up(item, amount, with = 0, pick_up_with_only_this_slot = false):
-	if pick_up_with_only_this_slot and get_child(with).add_item(item, amount): #pick up with slot
-		return true
+	if pick_up_with_only_this_slot:
+		if get_child(with).add_item(item, amount): #pick up with slot
+			return true
 	for i in active_slots: #pick up, scan for available active slot
 		if get_child(i).add_item(item, amount):
 			return true
@@ -29,7 +30,7 @@ func drop(from = 0):
 "
 _sections_unfolded = [ "Resource" ]
 
-[node name="Inventory" type="Node" index="0"]
+[node name="Inventory" type="Node"]
 
 script = SubResource( 1 )
 active_slots = 1

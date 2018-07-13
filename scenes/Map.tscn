@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/graphics/tiles/ancient.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Map.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Objects/Actors/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Objects/Actors/Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/graphics/Fog.tres" type="TileSet" id=5]
+[ext_resource path="res://scenes/Objects/Items/Sword_one_magic.tscn" type="PackedScene" id=6]
 
 [sub_resource type="GDScript" id=1]
 
@@ -90,9 +91,23 @@ _sections_unfolded = [ "Cell", "Z Index" ]
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 32, 32 )
+centered = false
+impassable = false
+FOV_obstruct = false
 
 [node name="Enemy" parent="." index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 112, 112 )
+centered = false
+impassable = false
+FOV_obstruct = false
+
+[node name="Sword_one_magic" parent="." index="3" instance=ExtResource( 6 )]
+
+position = Vector2( 48, 32 )
+centered = false
+impassable = false
+FOV_obstruct = false
+weight_g = 800
 
 

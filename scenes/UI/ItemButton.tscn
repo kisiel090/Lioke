@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/graphics/tiles/ancient/ancient_brick_blood.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+resource_name = "ItemButton"
+script/source = "extends Button
+
+export (int) var InventorySlot = 0 #what inventory slot? Primary (right hand) is default
+var SlotHandle
+
+func _ready():
+	_update_inventory()
+	_update_contents()
+	SlotHandle.connect(\"contents_changed\", self, \"update_contents\")
+	pass
+	
+func _update_inventory():#When actor Inventory changes structure etc. (e.g. possesion spell, dismembered limb)
+	SlotHandle = global.player.Inventory.get_child(InventorySlot) 
+	pass
+	
+func _update_contents(): #when Inventory content changes
+	icon = SlotHandle.get_child
+	pass
+	
+"
+_sections_unfolded = [ "Resource" ]
+
+[node name="ItemButton" type="Button" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 12.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 1 )
+flat = false
+align = 1
+script = SubResource( 1 )
+InventorySlot = 0
+
+
